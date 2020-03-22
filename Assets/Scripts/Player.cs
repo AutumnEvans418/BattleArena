@@ -7,13 +7,13 @@ public class Player : MonoBehaviour
     public float Jump;
     public float Speed;
     public Rigidbody rb;
-    public Vector3 Offset;
+    public float Offset;
     public float BombForce;
     public GameObject Bomb;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -33,22 +33,25 @@ public class Player : MonoBehaviour
         {
             vector.y += Jump;
         }
-       
-       // Vector3 forward = mouseWorld - transform.position;
+
+        // Vector3 forward = mouseWorld - transform.position;
         //transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
-       // transform.LookAt(Input.mousePosition);
-       // Debug.Log(Input.mousePosition + ", " + mouseWorld);
+        // transform.LookAt(Input.mousePosition);
+        // Debug.Log(Input.mousePosition + ", " + mouseWorld);
         //Debug.DrawLine(transform.position,mouseWorld);
         if (Input.GetMouseButtonDown(0))
         {
 
 
 
-           Vector3 mouse = Input.mousePosition;
-           mouse.z = transform.position.z - Camera.main.transform.position.z;
-           Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(mouse);
+            Vector3 mouse = Input.mousePosition;
+            mouse.z = transform.position.z - Camera.main.transform.position.z;
+            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(mouse);
+            //transform.LookAt(mouseWorld);
 
-           var bomb = Instantiate(Bomb, transform.position + Offset, transform.rotation);
+            var position = mouseWorld - transform.position;
+
+            var bomb = Instantiate(Bomb, transform.position + (position.normalized * Offset) , transform.rotation);
 
             // var direction = transform.position - mouseWorld;
             //Vector3 mouse = Input.mousePosition;
@@ -58,9 +61,9 @@ public class Player : MonoBehaviour
             //    transform.position.y));
             //Vector3 forward = mouseWorld - transform.position;
 
-            bomb.GetComponent<Rigidbody>().AddForce(mouseWorld * BombForce, ForceMode.Impulse);
+            bomb.GetComponent<Rigidbody>().AddForce(position * BombForce, ForceMode.Impulse);
         }
-        
+
         rb.AddForce(vector * Time.deltaTime);
     }
 }
