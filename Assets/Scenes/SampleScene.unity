@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &12357566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,6 +712,9 @@ MonoBehaviour:
   Jump: 15000
   Speed: 1000
   rb: {fileID: 1683524560}
+  Offset: {x: 0, y: 3, z: 0}
+  BombForce: 1
+  Bomb: {fileID: 324004642872470795, guid: 4787576294fe4204a97b1133c0c83d22, type: 3}
 --- !u!1 &2114000841
 GameObject:
   m_ObjectHideFlags: 0
