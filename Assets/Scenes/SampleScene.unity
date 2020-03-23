@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &12357566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 1341666258}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 1450746076}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885f96b7a339eae41805e6d4d699f3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jump: 20000
+  Jump: 40000
   Speed: 1000
   rb: {fileID: 1683524560}
   Offset: 2
@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 2114000842}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
