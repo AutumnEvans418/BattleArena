@@ -21,17 +21,17 @@ public class Player : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        //if (collision.gameObject.CompareTag("Ground"))
-        //{
-        IsGounded.Remove(collision.gameObject);
-        //}
+        if (collision.gameObject.CompareTag("Wall") != true)
+        {
+            IsGounded.Remove(collision.gameObject);
+        }
     }
     void OnCollisionEnter(Collision collision)
     {
-        //if (collision.gameObject.CompareTag("Ground"))
-        //{
-        IsGounded.Add(collision.gameObject);
-        //}
+        if (collision.gameObject.CompareTag("Wall") != true)
+        {
+            IsGounded.Add(collision.gameObject);
+        }
     }
     // Update is called once per frame
     void Update()
