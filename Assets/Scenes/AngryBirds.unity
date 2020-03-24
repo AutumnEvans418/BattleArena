@@ -2271,7 +2271,7 @@ PrefabInstance:
     - target: {fileID: 8968393079018704157, guid: dcdb3d10a57076446b89193ead940edf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.37
+      value: 2.26
       objectReference: {fileID: 0}
     - target: {fileID: 8968393079018704157, guid: dcdb3d10a57076446b89193ead940edf,
         type: 3}
@@ -4171,7 +4171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902366609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.07, y: 14.727314, z: -22.967773}
+  m_LocalPosition: {x: 8.87175, y: 14.727314, z: -22.967773}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1375267983}
@@ -11376,8 +11376,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375267978}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.3617496, y: -0.26731396, z: 22.967773}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1139634724}
@@ -11397,6 +11397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextScene: 
+  FadeDuration: 0
 --- !u!43 &1485486285
 Mesh:
   m_ObjectHideFlags: 0
