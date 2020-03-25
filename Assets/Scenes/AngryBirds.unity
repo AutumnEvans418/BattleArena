@@ -2560,10 +2560,60 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
         type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
       propertyPath: m_Actions
       value: 
       objectReference: {fileID: -944628639613478452, guid: e0a5b916fc9a8e941a43d756582df6e3,
         type: 3}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
+      value: f1f13d62-d75e-4cbe-88ad-6883314c8b11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
+      value: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: cc7f01b6-4012-4ea8-af70-466e287e8c79
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: Player/Aim[/XInputControllerWindows/rightStick,/Mouse/position]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 74c46f4e-6ada-4bd3-a6d9-60e92ab1ad1d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: Player/Fire[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: f226e31b-f1ff-4e34-b2d6-0975f196e151
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874189067242917398, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: Player/Jump[/Keyboard/space,/XInputControllerWindows/leftTrigger]
+      objectReference: {fileID: 0}
     - target: {fileID: 8968393079018704131, guid: dcdb3d10a57076446b89193ead940edf,
         type: 3}
       propertyPath: VelocityReduction
