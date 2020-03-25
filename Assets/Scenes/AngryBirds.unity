@@ -4276,7 +4276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 943617896}
-  Speed: 0.25
+  Speed: 0.5
   Follow: {fileID: 284348301}
   Offset: {x: 0, y: 0, z: 0}
 --- !u!114 &943617899

@@ -15,9 +15,10 @@ public class CameraFollow : MonoBehaviour
         Offset = Camera.transform.position - Follow.position;
     }
 
+    private Vector3 velocity;
     // Update is called once per frame
     void Update()
     {
-        Camera.transform.position = Vector3.MoveTowards(Camera.transform.position, Follow.position + Offset, Speed);
+        Camera.transform.position = Vector3.SmoothDamp(Camera.transform.position, Follow.position + Offset, ref velocity, Speed);
     }
 }

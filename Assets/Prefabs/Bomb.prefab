@@ -111,7 +111,7 @@ MonoBehaviour:
   Radius: 10
   ExplosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
-  Force: 700
+  Force: 1000
 --- !u!54 &324004642872470801
 Rigidbody:
   m_ObjectHideFlags: 0
