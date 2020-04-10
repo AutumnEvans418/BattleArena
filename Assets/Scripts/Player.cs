@@ -12,61 +12,100 @@ public class Player : MonoBehaviour
     public float Offset;
     public float BombForce;
     public GameObject Bomb;
+    //private List<GameObject> IsGounded = new List<GameObject>();
+    public Transform target;
+    private PlayerInput2 input;
 
-    private List<GameObject> IsGounded = new List<GameObject>();
+    public float ControllerAimSensitivity = 30;
     // Start is called before the first frame update
+    void Awake()
+    {
+        input = new PlayerInput2();
+        input.Player.Aim.performed += OnAim;
+        input.Player.Fire.performed += OnFire;
+        input.Player.Jump.performed += OnJump;
+    }
+
     void Start()
     {
-
+        var cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
+        cam.Follow = transform;
+        cam.SetupOffset();
     }
-
-    void OnCollisionExit(Collision collision)
+    private void OnDisable()
     {
-        if (collision.gameObject.CompareTag("Wall") != true)
-        {
-            IsGounded.Remove(collision.gameObject);
-        }
+        input.Disable();
     }
-    void OnCollisionEnter(Collision collision)
+
+    void OnEnable()
     {
-        if (collision.gameObject.CompareTag("Wall") != true)
-        {
-            IsGounded.Add(collision.gameObject);
-        }
+        input.Enable();
     }
+    //void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Wall") != true)
+    //    {
+    //        IsGounded.Remove(collision.gameObject);
+    //    }
+    //}
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Wall") != true)
+    //    {
+    //        IsGounded.Add(collision.gameObject);
+    //    }
+    //}
     Vector2 vector = Vector2.zero;
 
-    public void OnMove(InputAction.CallbackContext value)
-    {
-        Debug.Log("moving!");
-        vector.x = value.ReadValue<Vector2>().x * Speed;
-    }
+   
 
-    public void OnAim(InputValue value)
+    public void OnAim(InputAction.CallbackContext value)
     {
-        aimPosition = value.Get<Vector2>();
+        var a = value.ReadValue<Vector2>();
+        var b = new Vector3(a.x,a.y,0);
+
+        if (b.magnitude <= 1)
+        {
+            aimPosition = b * ControllerAimSensitivity;
+        }
+        else
+        {
+            b.z = transform.position.z - Camera.main.transform.position.z;
+            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(b);
+
+            var position = mouseWorld - transform.position;
+
+            aimPosition = position;
+            target.position = position;
+        }
+        Debug.Log($"Before: {b}; Aim Position " + aimPosition);
     }
     Vector3 aimPosition = Vector3.zero;
-    public void OnFire(InputValue value)
+    public void OnFire(InputAction.CallbackContext value)
     {
         //aimPosition = value.Get<Vector2>();
-        aimPosition.z = transform.position.z - Camera.main.transform.position.z;
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(aimPosition);
+        
 
-        var position = mouseWorld - transform.position;
+        var bomb = Instantiate(Bomb, transform.position + (aimPosition.normalized * Offset), transform.rotation);
 
-        var bomb = Instantiate(Bomb, transform.position + (position.normalized * Offset), transform.rotation);
-
-        bomb.GetComponent<Rigidbody>().AddForce(position * BombForce, ForceMode.Impulse);
+        bomb.GetComponent<Rigidbody>().AddForce(aimPosition * BombForce, ForceMode.Impulse);
     }
 
-    public void OnJump(InputValue value)
+    public void OnJump(InputAction.CallbackContext value)
     {
-        if (IsGounded.Any() != true)
+        if (!IsGounded())
         {
+            Debug.Log("Not grounded!");
             return;
         }
+        Debug.Log("Jumped!");
         vector.y += Jump;
+    }
+
+    public float GroundDistance = 1;
+    private bool IsGounded()
+    {
+        return Physics.Linecast(transform.position, transform.position + Vector3.down * GroundDistance);
     }
 
     public float VelocityReduction = 2;
@@ -75,16 +114,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * GroundDistance, Color.red);
+
+        vector.x = input.Player.Move.ReadValue<Vector2>().x * Speed;
+
         var currentVelocity = rb.velocity;
 
         if (vector.x * currentVelocity.x > 0)
         {
             //same direction...
-            vector /= VelocityReduction;
+            vector.x /= VelocityReduction;
         }
         else if (vector.x * currentVelocity.x < 0)
         {
-            vector *= VelocityIncrease;
+            vector.x *= VelocityIncrease;
         }
 
         if (vector != Vector2.zero)
