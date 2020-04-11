@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
     public float Offset;
     public float BombForce;
     public GameObject Bomb;
-    //private List<GameObject> IsGounded = new List<GameObject>();
-    public Transform target;
+    public Transform targetPrefab;
+    private Transform target;
     private PlayerInput2 input;
 
     public float ControllerAimSensitivity = 30;
@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         var cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         cam.Follow = transform;
         cam.SetupOffset();
+        target = Instantiate(targetPrefab, transform.position, transform.rotation);
     }
     private void OnDisable()
     {
@@ -41,32 +42,19 @@ public class Player : MonoBehaviour
     {
         input.Enable();
     }
-    //void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Wall") != true)
-    //    {
-    //        IsGounded.Remove(collision.gameObject);
-    //    }
-    //}
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Wall") != true)
-    //    {
-    //        IsGounded.Add(collision.gameObject);
-    //    }
-    //}
     Vector2 vector = Vector2.zero;
 
-   
+
 
     public void OnAim(InputAction.CallbackContext value)
     {
         var a = value.ReadValue<Vector2>();
-        var b = new Vector3(a.x,a.y,0);
+        var b = new Vector3(a.x, a.y, 0);
 
         if (b.magnitude <= 1)
         {
             aimPosition = b * ControllerAimSensitivity;
+            target.position = transform.position + aimPosition;
         }
         else
         {
@@ -83,12 +71,14 @@ public class Player : MonoBehaviour
     Vector3 aimPosition = Vector3.zero;
     public void OnFire(InputAction.CallbackContext value)
     {
-        //aimPosition = value.Get<Vector2>();
+        var result = value.ReadValue<float>();
+
+        if (result >= 1)
+        {
+            var bomb = Instantiate(Bomb, transform.position + (aimPosition.normalized * Offset), transform.rotation);
+            bomb.GetComponent<Rigidbody>().AddForce(aimPosition * BombForce, ForceMode.Impulse);
+        }
         
-
-        var bomb = Instantiate(Bomb, transform.position + (aimPosition.normalized * Offset), transform.rotation);
-
-        bomb.GetComponent<Rigidbody>().AddForce(aimPosition * BombForce, ForceMode.Impulse);
     }
 
     public void OnJump(InputAction.CallbackContext value)
@@ -111,6 +101,9 @@ public class Player : MonoBehaviour
     public float VelocityReduction = 2;
 
     public float VelocityIncrease = 10;
+
+
+
     // Update is called once per frame
     void Update()
     {
