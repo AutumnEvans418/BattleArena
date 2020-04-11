@@ -2634,6 +2634,11 @@ PrefabInstance:
       propertyPath: Jump
       value: 20000
       objectReference: {fileID: 0}
+    - target: {fileID: 8968393079018704131, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: ControllerAimSensitivity
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8968393079018704153, guid: dcdb3d10a57076446b89193ead940edf,
         type: 3}
       propertyPath: m_Name
@@ -11454,7 +11459,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15556
+  m_Name: pb_Mesh21358
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
