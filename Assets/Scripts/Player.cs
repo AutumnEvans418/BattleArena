@@ -88,9 +88,18 @@ public class Player : MonoBehaviour
             Debug.Log("Not grounded!");
             return;
         }
-        Debug.Log("Jumped!");
-        vector.y += Jump;
+
+        var jump = value.ReadValue<float>();
+        if (jump >= 1)
+        {
+            Debug.Log("Jumped!");
+            vector.y += Jump;
+        }
+        
     }
+
+
+
 
     public float GroundDistance = 1;
     private bool IsGounded()
