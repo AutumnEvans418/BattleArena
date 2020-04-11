@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class FollowObject : MonoBehaviour
 {
-    public Camera Camera;
+    public GameObject Camera;
     public float Speed;
     public Transform Follow;
-
+    [HideInInspector]
     public Vector3 Offset;
+
+    public bool UseOffset = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        SetupOffset();
+        if (UseOffset)
+            SetupOffset();
     }
 
     public void SetupOffset()

@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        var cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
+        var cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FollowObject>();
         cam.Follow = transform;
         cam.SetupOffset();
         target = Instantiate(targetPrefab, transform.position, transform.rotation);

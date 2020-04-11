@@ -443,9 +443,9 @@ GameObject:
   - component: {fileID: 73224482}
   - component: {fileID: 73224481}
   - component: {fileID: 73224480}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Key
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1267,6 +1267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968393079018704153, guid: dcdb3d10a57076446b89193ead940edf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8968393079018704157, guid: dcdb3d10a57076446b89193ead940edf,
         type: 3}
@@ -2137,10 +2142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff946bb74338b4db5bbe08b51aa3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 943617896}
+  Camera: {fileID: 943617894}
   Speed: 0.5
   Follow: {fileID: 0}
   Offset: {x: 0, y: 0, z: 0}
+  UseOffset: 1
 --- !u!114 &943617899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8801,6 +8807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1534334810}
+  - component: {fileID: 1534334811}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8821,6 +8828,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1534334811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534334809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaff946bb74338b4db5bbe08b51aa3bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 73224479}
+  Speed: 5
+  Follow: {fileID: 1553821034}
+  Offset: {x: 0, y: 0, z: 0}
+  UseOffset: 0
+--- !u!1 &1553821033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1553821034}
+  m_Layer: 0
+  m_Name: KeyDestination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1553821034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553821033}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.41, y: 15.82, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1626079668
 GameObject:
@@ -9992,7 +10046,7 @@ GameObject:
   - component: {fileID: 1679817855}
   m_Layer: 0
   m_Name: KeyDoor
-  m_TagString: Untagged
+  m_TagString: KeyDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15357,7 +15411,7 @@ GameObject:
   - component: {fileID: 2097638524}
   - component: {fileID: 2097638526}
   - component: {fileID: 2097638525}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

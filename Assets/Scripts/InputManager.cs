@@ -4,11 +4,11 @@ namespace Assets.Scripts
 {
     public class InputManager : MonoBehaviour
     {
-        public CameraFollow CameraFollow;
+        public FollowObject FollowObject;
         public void OnPlayerJoined(GameObject obj)
         {
-            CameraFollow.Follow = obj.transform;
-            CameraFollow.SetupOffset();
+            FollowObject.Follow = obj.transform;
+            FollowObject.SetupOffset();
         }
     }
 }
