@@ -16,7 +16,7 @@ public class Door : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || (collision.gameObject.CompareTag("Key") && collision.gameObject.GetComponent<Key>().KeyType == KeyType.ExitDoor))
         {
             SceneManager.LoadScene(NextScene);
         }

@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum KeyType
+{
+    KeyDoor,
+    PlayerDoor,
+    ExitDoor
+}
+
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(RigidFollowObject))]
 [RequireComponent(typeof(Rigidbody))]
 public class Key : MonoBehaviour
 {
+    public KeyType KeyType;
     private RigidFollowObject followObject;
     private SphereCollider sphereCollider;
 
@@ -28,11 +36,14 @@ public class Key : MonoBehaviour
             followObject.IsFollowing = true;
             rigidbody.isKinematic = false;
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.gameObject.CompareTag("Key") && followObject.FollowObject == null)
+        {
+            sphereCollider.isTrigger = false;
+            followObject.FollowObject = other.GetComponent<Key>().followObject.FollowObject;
+            followObject.IsFollowing = true;
+            rigidbody.isKinematic = false;
+        }
     }
+    
 }
