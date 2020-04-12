@@ -30,7 +30,7 @@ public class FollowObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Follow != null)
+        if (Follow != null && Camera != null)
             Camera.transform.position = Vector3.SmoothDamp(Camera.transform.position, Follow.position + Offset, ref velocity, Speed);
     }
 }
